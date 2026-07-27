@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg15
+    container_name: cooling_timescaledb
+    environment:
+      POSTGRES_DB: cooling_telemetry
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - tsdata:/var/lib/postgresql/data
+    restart: always
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: cooling_mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: always
+
+  backend:
+    build: ./backend
+    container_name: cooling_backend
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@timescaledb:5432/cooling_telemetry
+      - MQTT_BROKER=mosquitto
+      - MQTT_PORT=1883
+    ports:
+      - "8000:8000"
+    depends_on:
+      - timescaledb
+      - mosquitto
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: cooling_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: always
+
+  simulator:
+    build:
+      context: ./simulator
+    container_name: cooling_simulator
+    environment:
+      - MQTT_BROKER=mosquitto
+      - MQTT_PORT=1883
+    depends_on:
+      - mosquitto
+    restart: always
+
+volumes:
+  tsdata:
