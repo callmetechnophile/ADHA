@@ -541,11 +541,10 @@ During a 60-minute test run using the default configuration, the system demonstr
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](file:///C:/Users/worka/.gemini/antigravity/scratch/dual_loop_cooling/LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ---
 
 ## Authors
 
-- **Embedded Systems & Control Engineering**: callmetechnophile
-- **Technical Documentation & AI Pipeline**: Antigravity AI Assistant
+- **Embedded Systems & Control Engineering**: **Ayushman Patro**, **Harshitha L M**, **Dhanashree**, **Anurag Kumar Singh**.
