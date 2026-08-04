@@ -1,0 +1,13 @@
+# Design, Embedded Implementation, and Empirical Validation of a Decoupled Dual-Loop Liquid Cooling Architecture for High-Heat-Flux Thermal Management
+
+**Running Title:** Embedded Decoupled Dual-Loop Liquid Cooling System
+
+---
+
+### ABSTRACT
+
+The rapid elevation of heat flux densities across modern high-performance computing, power electronics, and nuclear auxiliary systems presents severe challenges to traditional single-loop cooling architectures, where direct fluid exposure heightens the risks of contamination, thermal overshoot, and catastrophic hardware failure. To address these critical vulnerabilities, this study presents the design, embedded implementation, and empirical validation of a decoupled dual-loop liquid cooling architecture featuring real-time hydronic and thermal control. The proposed system physically segregates heat absorption and ambient dissipation processes through a primary fluid circuit surrounding a metallic thermal load and an independent secondary circuit, thermally coupled via a high-conductivity aluminum liquid-to-liquid heat exchanger. An ESP32-S3 microcontroller serves as the central edge computing unit, executing multi-node digital temperature acquisition via MAX6675 cold-junction-compensated K-type thermocouples with 0.25°C quantization resolution and continuous volumetric flow rate monitoring through a ZJ-S201 Hall-effect transducer. Closed-loop thermal regulation is executed using a non-blocking hysteresis control algorithm operating within a 65.0°C to 80.0°C setpoint band to drive a high-power MOSFET heater switching circuit, augmented by automated low-flow and thermal runaway safety interlocks. Experimental evaluation over a continuous 60-minute operational test under a 300 W thermal load demonstrated robust thermal regulation, maintaining the primary thermal core strictly within a band of 64.8°C to 78.5°C without exceeding the 80.0°C safety threshold. The liquid-to-liquid heat exchanger enabled effective thermal isolation, stabilizing the secondary heat rejection loop at 32.4°C. Hydronic performance remained exceptionally consistent, achieving a primary volumetric flow rate of 2.80 L/min with a flow stability of 95.4% and a standard deviation below 0.04 L/min at an average MOSFET duty cycle of 68%. This study validates a low-cost, low-latency, and scalable embedded architecture for autonomous thermal management in mission-critical industrial applications.
+
+---
+
+**Keywords:** Dual-Loop Liquid Cooling; Thermal Management; Liquid-to-Liquid Heat Exchanger; Embedded Systems; ESP32-S3 Microcontroller; Thermocouple Sensing; Hysteresis Control; Hydronic Flow Monitoring; High-Heat-Flux Electronics.
